@@ -46,8 +46,6 @@ Aggregated Reports for Each Match and Player Rankings to generate aggregated rep
 ``` player_rankings = Player.joins(:kills).group("players.id").order("count(deaths.id) DESC").count("deaths.id") ```
 Deaths Grouped by Cause for Each Match
 
-## To fetch deaths grouped by cause for each match:
-
 ### Group deaths by cause for a specific match
 ``` grouped_deaths = Death.where(match_id: some_match_id).group(:cause).count ```
 

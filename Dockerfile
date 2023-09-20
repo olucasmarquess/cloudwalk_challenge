@@ -1,20 +1,34 @@
+# Use a specific version of Slim Buster Linux
 FROM ruby:3.2.2
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y \
+  build-essential \
+  postgresql-client \
+  nodejs \
+  yarn \
+  build-essential patch ruby-dev zlib1g-dev liblzma-dev
 
-RUN mkdir /quaker_parser
+# Install Ruby and Bundler
+RUN gem update --system \
+  && gem install bundler -v "~> 2.0"
+
+# Set working directory
 WORKDIR /quaker_parser
 
-COPY Gemfile /quaker_parser/Gemfile
-COPY Gemfile.lock /quaker_parser/Gemfile.lock
+# Install Ruby dependencies
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-COPY . /quaker_parser
+# Clean and reinstall gems
+RUN bundle clean --force
+RUN bundle install
 
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+# Copy application files
+COPY . ./
 
-EXPOSE 3010
+# Expose port 3000
+EXPOSE 3000
 
+# Configure the main process to run when running the image
 CMD ["rails", "server", "-b", "0.0.0.0"]

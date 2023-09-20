@@ -7,13 +7,15 @@
 #  kills_by_means :jsonb
 #  players        :jsonb
 #  total_kills    :integer          default(0)
+#  world_kills    :integer          default(0)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 class Match < ApplicationRecord
-  has_many :player_matches
+  has_many :player_matches, inverse_of: 'match'
+  has_many :weapons_used, inverse_of: 'match'
+  has_many :deaths, inverse_of: 'match'
   has_many :players, through: :player_matches
-  has_many :weapons_used
   has_many :weapons, through: :weapons_used
 
   serialize :players, Array

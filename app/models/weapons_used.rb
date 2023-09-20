@@ -21,5 +21,5 @@
 #
 class WeaponsUsed < ApplicationRecord
   belongs_to :weapon
-  belongs_to :match
+  belongs_to :match, inverse_of: 'weapons_used'
 end

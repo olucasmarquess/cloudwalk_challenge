@@ -10,10 +10,58 @@ Quake Log Parser is a Ruby on Rails application that parses game logs from Quake
 - Player Rankings: Keeps track of player performance and rankings.
 - Cause of Death Analysis: Aggregates data on the causes of player deaths in each match.
 
-### Prerequisites
-- Docker
-- Docker Compose
-- Setup and Installation
+## Setup
+Make sure you have Ruby on Rails installed on your system.
+
+### Installing using Docker
+Run the following command to install the project dependencies:
+
+Inside folder Run to build the project
+
+```bash
+docker compose build
+```
+
+### Database configuration
+Make sure you have correctly configured the database information in the `config/data_base.yml` file.
+
+Build the application
+```bash
+docker compose up --build
+```
+
+```bash
+docker compose run web rake db:create db:migrate
+```
+
+The project will be accessible at `http://localhost:3000`.
+
+## Usage
+Start the application
+```bash
+docker compose up
+```
+Stop the application
+```bash
+docker compose down
+```
+
+### Installing without Docker
+Run the following command to install the project dependencies:
+
+Inside folder Run to build the project
+
+```bash
+bundle install
+```
+
+```bash
+rake db:create db:migrate
+```
+
+```bash
+bundle exec rails s -p 3000 -b 0.0.0.0
+```
 
 ### Usage
 #### Generate Match Report

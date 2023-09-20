@@ -34,9 +34,6 @@ docker compose up --build
 docker compose run web rake db:create db:migrate
 ```
 
-The project will be accessible at `http://localhost:3000`.
-
-## Usage
 Start the application
 ```bash
 docker compose up

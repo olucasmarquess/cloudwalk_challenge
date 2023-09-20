@@ -61,13 +61,9 @@ bundle exec rails s -p 3000 -b 0.0.0.0
 ```
 
 ### Usage
-#### Generate Match Report
+- This will generate a CSV report in the root directory, containing details of each match.
+- Contains aggregated data on causes of deaths for each match.
 ``` rake quake_report:generate ```
-
-This will generate a CSV report in the root directory, containing details of each match.
-
-#### Generate Deaths by Cause Report
-This is part of the quake_report:generate task and will create a separate CSV file that contains aggregated data on causes of deaths for each match.
 
 ### Database Queries in Ruby
 

@@ -88,6 +88,9 @@ Deaths Grouped by Cause for Each Match
 ### Group deaths by cause for a specific match
 ``` grouped_deaths = Death.where(match_id: some_match_id).group(:cause).count ```
 
+## Tests
+``` docker-compose run web bundle exec rspec ```
+
 #### Next Steps
 
 - Implement Charts for Better Visualization, I plan to add various types of charts to help users visualize match data and player performance more effectively.

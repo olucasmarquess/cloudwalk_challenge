@@ -29,15 +29,11 @@ This is part of the quake_report:generate task and will create a separate CSV fi
 Collecting Death Data
 To collect data on player deaths, you might use queries like:
 
-
 ### Fetch all deaths in a specific match
 ``` deaths = Death.where(match_id: some_match_id) ```
 
 ### Fetch all deaths caused by a specific player
 ``` deaths_by_player = Death.where(killer_id: some_player_id) ```
-
-Aggregated Reports for Each Match and Player Rankings to generate aggregated reports for each match and player rankings, consider the following queries:
-
 
 ### Fetch total kills in a match
 ``` total_kills = Death.where(match_id: some_match_id).count ```
